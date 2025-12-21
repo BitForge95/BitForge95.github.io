@@ -26,7 +26,7 @@ export default function Contact() {
       </motion.p>
 
       <motion.a
-        href="mailto:your-email@gmail.com"
+        href="mailto:guttulacharansai@gmail.com"
         className="px-12 py-4 gradient-stroke rounded-xl text-lg inline-block"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
