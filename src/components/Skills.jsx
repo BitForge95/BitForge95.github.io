@@ -77,7 +77,7 @@ export default function Skills() {
       </div>
 
       <p className="mt-20 text-sm uppercase tracking-widest text-zinc-500">
-        Languages · Frameworks · Systems · Tooling
+        Languages · Frameworks · Tooling · Systems
       </p>
     </section>
   );
