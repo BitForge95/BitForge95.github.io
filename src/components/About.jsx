@@ -8,7 +8,7 @@ export default function About() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
     >
-      <h2 className="text-5xl font-bold mb-14">About</h2>
+      <h2 className="text-5xl font-bold mb-14">About Me</h2>
 
       <p className="text-3xl leading-relaxed text-zinc-300">
         I’m a Computer Science undergraduate at IIITDM Jabalpur

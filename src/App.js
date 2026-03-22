@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
+import OpenSourceContributions from "./components/OpenSourceContributions";
 import Contact from "./components/Contact";
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
       <div className="max-w-6xl mx-auto px-6">
         <Hero />
         <Skills />
+        <OpenSourceContributions />
         <Projects />
         <About />
         <Contact />
