@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    name: "NodeRoom",
-    image: "/noderoom.png",
+    name: "High-Performance-Neuro-Data-Pipeline",
+    image: "/noderoom.png", // Using the same image for now
     desc:
-      "A real-time collaborative platform built with an event-driven backend, focusing on low-latency communication, concurrency, and scalability."
+      "A high-performance, object-oriented data infrastructure prototype designed to align large-scale neuronal recordings with high-dimensional behavioral stimuli."
   },
   {
     name: "Clustify",
