@@ -38,9 +38,9 @@ const contributions = [
 
 export default function OpenSourceContributions() {
   return (
-    <section className="py-48">
+    <section id="open-source" className="section-shell">
       <motion.h2
-        className="text-5xl font-bold mb-20"
+        className="section-title"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -52,7 +52,7 @@ export default function OpenSourceContributions() {
         {contributions.map((item) => (
           <motion.article
             key={item.project}
-            className="gradient-stroke rounded-2xl p-8 md:p-10"
+            className="surface-card p-5 sm:p-6 md:p-9"
             initial={{ opacity: 0, y: 80 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -60,7 +60,7 @@ export default function OpenSourceContributions() {
           >
             <div className="flex flex-wrap items-start justify-between gap-6">
               <div>
-                <h3 className="text-3xl font-semibold">{item.project}</h3>
+                <h3 className="text-2xl md:text-3xl font-semibold leading-tight">{item.project}</h3>
                 <p className="mt-2 text-zinc-300">{item.role}</p>
               </div>
               <p className="text-sm uppercase tracking-widest text-zinc-500">
@@ -72,14 +72,14 @@ export default function OpenSourceContributions() {
               {item.summary}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-7 sm:mt-8 flex flex-wrap gap-2.5 sm:gap-3">
               {item.links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-3 border border-zinc-700 rounded-xl text-sm uppercase tracking-wide"
+                  className="btn-outline"
                 >
                   {link.label}
                 </a>

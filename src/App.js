@@ -1,28 +1,57 @@
-import { motion, useScroll } from "framer-motion";
+import { lazy, Suspense } from "react";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import OpenSourceContributions from "./components/OpenSourceContributions";
-import Contact from "./components/Contact";
+
+const About = lazy(() => import("./components/About"));
+const Skills = lazy(() => import("./components/Skills"));
+const Projects = lazy(() => import("./components/Projects"));
+const OpenSourceContributions = lazy(() => import("./components/OpenSourceContributions"));
+const Contact = lazy(() => import("./components/Contact"));
+
+const navLinks = [
+  { label: "Skills", href: "#skills" },
+  { label: "Open Source", href: "#open-source" },
+  { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" }
+];
 
 export default function App() {
-  const { scrollYProgress } = useScroll();
-
   return (
     <>
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-cyan-400 origin-left z-50"
-        style={{ scaleX: scrollYProgress }}
-      />
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#07080d]/70 border-b border-zinc-800/70">
+        <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+          <a href="#home" className="text-sm sm:text-base font-semibold tracking-tight">
+            Charan Sai
+          </a>
+
+          <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-400">
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} className="hover:text-zinc-100 transition-colors duration-200">
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline !text-[11px] sm:!text-xs"
+          >
+            Resume
+          </a>
+        </div>
+      </header>
 
       <div className="max-w-6xl mx-auto px-6">
         <Hero />
-        <Skills />
-        <OpenSourceContributions />
-        <Projects />
-        <About />
-        <Contact />
+        <Suspense fallback={<div className="h-24" />}>
+          <Skills />
+          <OpenSourceContributions />
+          <Projects />
+          <About />
+          <Contact />
+        </Suspense>
       </div>
     </>
   );

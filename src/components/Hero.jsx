@@ -1,57 +1,52 @@
-import { motion } from "framer-motion";
-
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center relative">
+    <section id="home" className="min-h-[calc(100vh-4rem)] flex items-center relative section-shell !pt-16 sm:!pt-20">
       <div className="noise" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        whileHover={{ y: -6 }}
-      >
-
-        <p className="text-sm uppercase tracking-widest text-zinc-500">
+      <div className="w-full">
+        <p className="text-xs sm:text-sm uppercase tracking-[0.22em] text-cyan-400/90">
           Computer Science Sophomore · IIITDM Jabalpur
         </p>
 
-        <h1 className="mt-8 text-[clamp(3rem,7vw,6.5rem)] font-extrabold leading-[0.95]">
+        <h1 className="mt-6 sm:mt-7 text-[clamp(2.4rem,10vw,6.2rem)] font-extrabold leading-[0.95] tracking-tight">
           Guttula<br />Charan Sai
         </h1>
 
-        <p className="mt-10 text-2xl text-zinc-400 max-w-2xl">
-          Full Stack Developer with a strong interest in building scalable systems,
-          backend architecture, and modern web applications.
+        <p className="mt-7 text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-3xl leading-relaxed">
+          Student developer focused on backend systems, scalable web applications,
+          and open-source engineering in neuroinformatics.
         </p>
 
+        <p className="mt-4 text-zinc-400 max-w-2xl leading-relaxed">
+          I build practical products while growing strong fundamentals in computer science,
+          systems design, and maintainable software architecture.
+        </p>
 
-        <div className="mt-14 flex gap-8 flex-wrap">
+        <div className="mt-10 sm:mt-12 flex gap-3 sm:gap-4 md:gap-6 flex-wrap">
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 gradient-stroke rounded-xl text-lg"
+            className="btn-primary w-full sm:w-auto"
           >
             View Resume
           </a>
 
           <a
             href="https://github.com/BitForge95"
-            className="px-8 py-4 border border-zinc-700 rounded-xl text-lg"
+            className="btn-outline !normal-case !tracking-normal w-full sm:w-auto sm:!px-8 sm:!py-4 sm:!text-lg"
           >
             GitHub
           </a>
 
           <a
             href="https://www.linkedin.com/in/charansai-guttula-764547324/"
-            className="px-8 py-4 border border-zinc-700 rounded-xl text-lg"
+            className="btn-outline !normal-case !tracking-normal w-full sm:w-auto sm:!px-8 sm:!py-4 sm:!text-lg"
           >
             LinkedIn
           </a>
         </div>
-
-      </motion.div>
+      </div>
     </section>
   );
 }

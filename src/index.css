@@ -2,17 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .section-title {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-12 sm:mb-16 md:mb-20;
+  }
+
+  .section-shell {
+    @apply py-24 sm:py-32 md:py-44;
+  }
+
+  .surface-card {
+    @apply gradient-stroke rounded-2xl;
+  }
+
+  .btn-outline {
+    @apply px-5 sm:px-6 py-3 border border-zinc-700 rounded-xl text-xs sm:text-sm uppercase tracking-wide hover:border-zinc-500 text-center;
+  }
+
+  .btn-primary {
+    @apply px-6 sm:px-8 py-3.5 sm:py-4 gradient-stroke rounded-xl text-base sm:text-lg text-center;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: #07080d;
   color: #e5e7eb;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 .noise {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.04;
+  background: radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.07), transparent 45%);
+  opacity: 0.22;
 }
 
 .gradient-stroke {
@@ -24,6 +63,7 @@ body {
 
 img {
   user-select: none;
+  display: block;
 }
 
 svg {
@@ -31,9 +71,86 @@ svg {
 }
 
 a {
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 a:hover {
   transform: translateY(-1px);
+}
+
+.marquee-shell {
+  overflow: hidden;
+}
+
+.marquee-track {
+  width: max-content;
+  display: flex;
+  gap: 0.75rem;
+  white-space: nowrap;
+  animation-name: skills-marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+.marquee-speed-sm {
+  animation-duration: 42s;
+}
+
+.marquee-speed-md {
+  animation-duration: 50s;
+}
+
+.marquee-speed-lg {
+  animation-duration: 58s;
+}
+
+.marquee-shell:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes skills-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .marquee-speed-sm {
+    animation-duration: 54s;
+  }
+
+  .marquee-speed-md {
+    animation-duration: 62s;
+  }
+
+  .marquee-speed-lg {
+    animation-duration: 70s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee-track {
+    animation: none;
+    transform: none;
+  }
 }

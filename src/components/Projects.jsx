@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const projects = [
   {
     name: "High-Performance-Neuro-Data-Pipeline",
-    image: "/noderoom.png", // Using the same image for now
+    image: "/noderoom.png",
     desc:
       "A high-performance, object-oriented data infrastructure prototype designed to align large-scale neuronal recordings with high-dimensional behavioral stimuli."
   },
@@ -23,9 +23,9 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="py-48">
+    <section id="projects" className="section-shell">
       <motion.h2
-        className="text-5xl font-bold mb-32"
+        className="section-title"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -33,21 +33,21 @@ export default function Projects() {
         Projects
       </motion.h2>
 
-      <div className="space-y-48">
-        {projects.map((p, i) => (
+      <div className="space-y-28 md:space-y-36">
+        {projects.map((p, index) => (
           <motion.div
             key={p.name}
-            className="grid md:grid-cols-2 gap-20 items-center"
+            className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-16 items-center"
             initial={{ opacity: 0, y: 120 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: "easeOut" }}
           >
             <div>
-              <h3 className="mt-6 text-4xl font-semibold">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight break-words">
                 {p.name}
               </h3>
-              <p className="mt-8 text-zinc-400 max-w-xl">
+              <p className="mt-5 sm:mt-6 text-zinc-400 max-w-xl leading-relaxed text-base sm:text-[1.05rem]">
                 {p.desc}
               </p>
             </div>
@@ -57,12 +57,15 @@ export default function Projects() {
               whileInView={{ y: [40, 0] }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="gradient-stroke rounded-2xl overflow-hidden"
+              className="surface-card overflow-hidden"
             >
               <img
                 src={p.image}
                 alt={p.name}
-                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                fetchPriority={index === 0 ? "high" : "auto"}
+                className="w-full h-full object-cover aspect-[16/10] md:aspect-auto"
               />
             </motion.div>
           </motion.div>

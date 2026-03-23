@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <section className="py-56 text-center">
+    <section id="contact" className="section-shell text-center">
       <motion.h2
-        className="text-6xl font-bold mb-8"
+        className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 sm:mb-7"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -14,7 +14,7 @@ export default function Contact() {
       </motion.h2>
 
       <motion.p
-        className="text-zinc-400 mb-14 text-xl max-w-2xl mx-auto"
+        className="text-zinc-400 mb-10 sm:mb-12 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -27,7 +27,7 @@ export default function Contact() {
 
       <motion.a
         href="mailto:guttulacharansai@gmail.com"
-        className="px-12 py-4 gradient-stroke rounded-xl text-lg inline-block"
+        className="btn-primary inline-block"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

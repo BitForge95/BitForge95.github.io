@@ -1,83 +1,116 @@
-import { motion } from "framer-motion";
 import {
+  SiPython,
   SiC,
   SiCplusplus,
-  SiPython,
   SiJavascript,
   SiTypescript,
+  SiRust,
+  SiMysql,
+  SiGnubash,
+  SiHtml5,
+  SiCss3,
   SiReact,
+  SiNextdotjs,
   SiNodedotjs,
   SiExpress,
-  SiLinux,
+  SiDjango,
+  SiTailwindcss,
+  SiOpenapiinitiative,
+  SiFramer,
+  SiGooglechrome,
+  SiAuth0,
+  SiNumpy,
+  SiPandas,
+  SiScipy,
+  SiScikitlearn,
+  SiPytest,
   SiGit,
-  SiGithub
+  SiGithub,
+  SiDocker,
+  SiLinux,
+  SiPostman,
+  SiVercel
 } from "react-icons/si";
-import { FaMicrochip } from "react-icons/fa";
+import { FaBrain, FaJava } from "react-icons/fa";
 
-const stack = [
+const rowOne = [
+  { name: "Python", icon: SiPython },
+  { name: "Java", icon: FaJava },
   { name: "C", icon: SiC },
   { name: "C++", icon: SiCplusplus },
-  { name: "Python", icon: SiPython },
   { name: "JavaScript", icon: SiJavascript },
   { name: "TypeScript", icon: SiTypescript },
-  { name: "React", icon: SiReact },
-  { name: "Node.js", icon: SiNodedotjs },
-  { name: "Express", icon: SiExpress },
-  { name: "Linux", icon: SiLinux },
-  { name: "QEMU", icon: FaMicrochip },
-  { name: "Assembly", icon: FaMicrochip },
-  { name: "Git", icon: SiGit },
-  { name: "GitHub", icon: SiGithub }
+  { name: "Rust", icon: SiRust },
+  { name: "SQL", icon: SiMysql },
+  { name: "Bash", icon: SiGnubash },
+  { name: "HTML", icon: SiHtml5 },
+  { name: "CSS", icon: SiCss3 }
 ];
 
-function StackRow({ reverse = false, size = "text-3xl", speed = 30 }) {
+const rowTwo = [
+  { name: "React", icon: SiReact },
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "Node.js", icon: SiNodedotjs },
+  { name: "Express.js", icon: SiExpress },
+  { name: "Django", icon: SiDjango },
+  { name: "Tailwind CSS", icon: SiTailwindcss },
+  { name: "REST APIs", icon: SiOpenapiinitiative },
+  { name: "Framer Motion", icon: SiFramer },
+  { name: "Chrome Extension API", icon: SiGooglechrome },
+  { name: "OAuth 2.0", icon: SiAuth0 }
+];
+
+const rowThree = [
+  { name: "NumPy", icon: SiNumpy },
+  { name: "Pandas", icon: SiPandas },
+  { name: "SciPy", icon: SiScipy },
+  { name: "Scikit-learn", icon: SiScikitlearn },
+  { name: "Nilearn", icon: FaBrain },
+  { name: "PyTest", icon: SiPytest },
+  { name: "Git", icon: SiGit },
+  { name: "GitHub", icon: SiGithub },
+  { name: "Docker", icon: SiDocker },
+  { name: "Linux", icon: SiLinux },
+  { name: "Postman", icon: SiPostman },
+  { name: "Vercel", icon: SiVercel }
+];
+
+function SkillMarquee({ skills, reverse = false, durationClass = "marquee-speed-md" }) {
   return (
-    <motion.div
-      className={`flex gap-20 whitespace-nowrap ${size}`}
-      initial={{ x: reverse ? "-50%" : "0%" }}
-      animate={{ x: reverse ? "0%" : "-50%" }}
-      transition={{
-        repeat: Infinity,
-        duration: speed,
-        ease: "linear"
-      }}
-    >
-      {[...stack, ...stack].map((item, i) => {
-        const Icon = item.icon;
-        return (
-          <div
-            key={i}
-            className="flex items-center gap-4 opacity-70 hover:opacity-100 transition"
-          >
-            <Icon className="text-cyan-400" />
-            <span className="font-medium">{item.name}</span>
-          </div>
-        );
-      })}
-    </motion.div>
+    <div className="marquee-shell">
+      <div className={`marquee-track ${durationClass} ${reverse ? "marquee-reverse" : ""}`}>
+        {[...skills, ...skills].map((skill, index) => {
+          const Icon = skill.icon;
+
+          return (
+            <span
+              key={`${skill.name}-${index}`}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-lg bg-zinc-900/80 border border-zinc-800 text-zinc-300 text-sm sm:text-base"
+            >
+              <Icon className="text-cyan-400 text-base sm:text-lg" />
+              <span>{skill.name}</span>
+            </span>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
 export default function Skills() {
   return (
-    <section className="py-48 overflow-hidden">
-      <motion.h2
-        className="text-5xl font-bold mb-24"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        Tech Stack
-      </motion.h2>
+    <section id="skills" className="section-shell overflow-hidden">
+      <h2 className="section-title">Skills</h2>
 
-      <StackRow size="text-4xl" speed={35} />
-
-      <div className="mt-16">
-        <StackRow reverse size="text-2xl text-zinc-400" speed={45} />
+      <div className="space-y-4 sm:space-y-5">
+        <SkillMarquee skills={rowOne} durationClass="marquee-speed-sm" />
+        <SkillMarquee skills={rowTwo} reverse durationClass="marquee-speed-md" />
+        <SkillMarquee skills={rowThree} durationClass="marquee-speed-lg" />
       </div>
 
-      <p className="mt-20 text-sm uppercase tracking-widest text-zinc-500">
-        Languages · Frameworks · Tooling · Systems
+      <p className="mt-10 text-sm text-zinc-500 max-w-2xl leading-relaxed">
+        Core skills across systems, full-stack development, and data tooling, with practical
+        project experience and an emphasis on performance and maintainable design.
       </p>
     </section>
   );
